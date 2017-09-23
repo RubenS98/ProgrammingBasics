@@ -1,4 +1,4 @@
-/*Programa que crea una tabla de multiplicacion.
+/*Programa que crea una tabla de multiplicacion. 2
 Ruben Sanchez
 Fecha: 18/09/2017
  */
@@ -7,7 +7,7 @@ public class TablaMult {
     public static void main(String[] args) {
         int i;
         int j=0;
-        
+
         for(i=-1; i<=11; i++){
             if(i==-1 && j==0){
                 System.out.print("T\t");
