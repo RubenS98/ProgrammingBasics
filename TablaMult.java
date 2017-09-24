@@ -1,8 +1,8 @@
-/*Programa que crea una tabla de multiplicacion. 2
+/*Programa que crea una tabla de multiplicacion. 3
 Ruben Sanchez
 Fecha: 18/09/2017
  */
-import java.util.Scanner;
+#GitHub Package
 public class TablaMult {
     public static void main(String[] args) {
         int i;
