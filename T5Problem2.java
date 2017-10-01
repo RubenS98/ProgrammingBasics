@@ -12,11 +12,11 @@ public class T5Problem2 {
 
 	System.out.println("Escribe un numero.");
 	num = lectura.nextInt();
-	
+
 	for(i=1; i<=num; i++){
 		fact=fact*+i;
 	}
-	System.out.println("El factorial de "+num+ " es "+ fact);
+	System.out.println("El factorial de el numero "+num+ " es "+ fact);
     }
 }
 
