@@ -11,6 +11,7 @@ public class Tarea2A5
 		Random ran = new Random();
     Scanner lectura = new Scanner(System.in);
     int num;
+		boolean magico = false
 
     System.out.println("Escribe el numero de renglones y columnas N que quieres que tenga la matriz (NXN), debes elegir un numero impar entre 3 y 11.");
     num=lectura.nextInt();
@@ -26,6 +27,17 @@ public class Tarea2A5
     }
 
     matriz = new int [num][num];
+
+		do{
+			for(int renglones=0; renglones<matriz.length; renglones++){
+				for(int columnas=0; columnas<matriz[0].length; columnas++){
+					matriz [renglones][columnas] = ran.nextInt(num+1);
+					System.out.print(matriz[renglones][columnas]+"\t");
+				}
+				System.out.println();
+			}
+			
+		}while(magico==false);
 
 	}//cierre main
 }
