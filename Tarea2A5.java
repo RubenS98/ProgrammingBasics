@@ -1,4 +1,4 @@
-/*Programa que rellena una matriz de NXN con numeros aleatorios(N dada por el usuario y N siendo un impar entre 3 y 11) y que determina si la matriz es simetrica.
+/*Programa que crea un cuadro magico de NXN con numeros aleatorios(N dada por el usuario y N siendo un impar entre 3 y 11).
 Ruben Sanchez
 Fecha: 14/10/2017
 */
@@ -8,10 +8,15 @@ public class Tarea2A5
 {
 	public static void main(String[] args){
 		int[][] matriz;
+		int [] renglonesM;
+		int [] columnasM;
 		Random ran = new Random();
     Scanner lectura = new Scanner(System.in);
     int num;
-		boolean magico = false
+		int suma=0;
+		int valor=0;
+		boolean magico = false;
+		boolean mismo = true;
 
     System.out.println("Escribe el numero de renglones y columnas N que quieres que tenga la matriz (NXN), debes elegir un numero impar entre 3 y 11.");
     num=lectura.nextInt();
@@ -27,7 +32,8 @@ public class Tarea2A5
     }
 
     matriz = new int [num][num];
-
+		renglonesM = new int [num];
+		columnasM = new int [num];
 		do{
 			for(int renglones=0; renglones<matriz.length; renglones++){
 				for(int columnas=0; columnas<matriz[0].length; columnas++){
@@ -36,7 +42,21 @@ public class Tarea2A5
 				}
 				System.out.println();
 			}
-			
+			System.out.println();
+			for(int renglones=0; renglones<matriz.length; renglones++){
+				for(int columnas=0; columnas<matriz[0].length; columnas++){
+					suma+= matriz[renglones][columnas];
+				}
+				renglonesM[renglones]=suma;
+			}
+			for(int i=0; i<(renglonesM.length-1); i++){
+				if(renglonesM[i]!=renglonesM[i+1]){
+					mismo=false;
+				}
+			}
+			if(mismo==true){
+				magico=true;
+			}
 		}while(magico==false);
 
 	}//cierre main
