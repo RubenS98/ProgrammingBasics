@@ -1,22 +1,18 @@
 /*Programa que crea un cuadro magico de NXN con numeros aleatorios(N dada por el usuario y N siendo un impar entre 3 y 11).
 Ruben Sanchez
-Fecha: 14/10/2017
+Fecha: 19/10/2017
 */
-import java.util.Random;
 import java.util.Scanner;
 public class Tarea2A5
 {
 	public static void main(String[] args){
 		int[][] matriz;
-		int [] renglonesM;
-		int [] columnasM;
-		Random ran = new Random();
     Scanner lectura = new Scanner(System.in);
     int num;
 		int suma=0;
+		int inicialR, inicialC, cuadrado, actualR=0, actualC=0, tempR, tempC, tempR2, tempC2;
 		int valor=0;
-		boolean magico = false;
-		boolean mismo = true;
+		boolean sale=false;
 
     System.out.println("Escribe el numero de renglones y columnas N que quieres que tenga la matriz (NXN), debes elegir un numero impar entre 3 y 11.");
     num=lectura.nextInt();
@@ -32,35 +28,72 @@ public class Tarea2A5
     }
 
     matriz = new int [num][num];
-		renglonesM = new int [num];
-		columnasM = new int [num];
-		do{
-			for(int renglones=0; renglones<matriz.length; renglones++){
-				for(int columnas=0; columnas<matriz[0].length; columnas++){
-					matriz [renglones][columnas] = ran.nextInt(num+1);
-					System.out.print(matriz[renglones][columnas]+"\t");
+		inicialR=0;
+		inicialC=num/2;
+		cuadrado=num*num;
+
+		actualR=inicialR;
+		actualC=inicialC;
+
+		for(int i=1; i<=cuadrado; i++){
+			if(i==1){
+				matriz[inicialR][inicialC]=i;
+
+			}
+			else if(actualR==0 || actualC==(num-1)){
+				tempR=actualR;
+				tempC=actualC;
+				if(actualR==0 && actualC==(num-1)){
+					tempR=(num-1);
+					tempC=0;
+					tempR2=tempR;
+					tempC2=tempC;
 				}
-				System.out.println();
+				else if(actualR==0){
+					tempR=(num-1);
+					tempC++;
+					tempR2=tempR;
+					tempC2=tempC;
+				}
+				else {
+					tempC=0;
+					tempR--;
+					tempR2=tempR;
+					tempC2=tempC;
+				}
+				if(matriz[tempR2][tempC2]!=0){
+					actualR=actualR+1;
+					matriz[actualR][actualC]=i;
+				}
+				else{
+					matriz[tempR][tempC]=i;
+					actualR=tempR;
+					actualC=tempC;
+				}
+			}
+			else if(matriz[actualR-1][actualC+1]!=0){
+				actualR=actualR+1;
+				matriz[actualR][actualC]=i;
+			}
+			else{
+				actualR--;
+				actualC++;
+				matriz[actualR][actualC]=i;
+			}
+		}
+		for(int renglones=0; renglones<matriz.length; renglones++){
+			for(int columnas=0; columnas<matriz[0].length; columnas++){
+				System.out.print(matriz[renglones][columnas]+"\t");
 			}
 			System.out.println();
-			for(int renglones=0; renglones<matriz.length; renglones++){
-				for(int columnas=0; columnas<matriz[0].length; columnas++){
-					suma+= matriz[renglones][columnas];
-				}
-				renglonesM[renglones]=suma;
-			}
-			for(int i=0; i<(renglonesM.length-1); i++){
-				if(renglonesM[i]!=renglonesM[i+1]){
-					mismo=false;
-				}
-			}
-			if(mismo==true){
-				magico=true;
-			}
-		}while(magico==false);
-
+		}
 	}//cierre main
 }
 /*
-
+C:\Users\thepo_000\Desktop\Programacion>java Tarea2A5
+Escribe el numero de renglones y columnas N que quieres que tenga la matriz (NXN), debes elegir un numero impar entre 3 y 11.
+3
+8       1       6
+3       5       7
+4       9       2
 */
